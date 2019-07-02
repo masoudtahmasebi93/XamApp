@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+             x:Class="XamApp.Views.ServiceItemsView"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:model="clr-namespace:XamApp.Models"
+             xmlns:local="clr-namespace:XamApp"
+             FlowDirection="{x:Static Device.FlowDirection}"
+             Title="سرویس های تکمیل شده">
+
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="Title" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform Android=10, UWP=14}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Opacity" Value="1"/>
+      </Style>
+      <Style x:Key="transparency" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform Android=10, UWP=14}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Opacity" Value="0.5"/>
+      </Style>
+      <Style x:Key="Detail" TargetType="Label">
+        <Setter Property="FontSize" Value="{OnPlatform Android=9, UWP=11}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Opacity" Value="0.5"/>
+      </Style>
+      <Style x:Key="Border" TargetType="syncfusion:BorderView">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderColor" Value="#a3a375"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+      </Style>
+      <Style x:Key="Layout" TargetType="StackLayout">
+        <Setter Property="Spacing" Value="0"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+      </Style>
+      <Style x:Key="frame" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="HasShadow" Value="True"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="BorderColor" Value="#8a8a5c"/>
+        <Setter Property="Margin" Value="10,0,10,30"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ScrollView Orientation="Vertical">
+    <StackLayout FlowDirection="RightToLeft">
+      <StackLayout Orientation="Horizontal"  VerticalOptions="Fill"
+           HorizontalOptions="StartAndExpand" HeightRequest="{OnPlatform Android=60,UWP=150}">
+        <sfListView:SfListView ItemsSource="{Binding serviceItems}" ItemSpacing="5"
+                                       ItemSize="{OnPlatform Android=40, UWP=90}" Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+          <sfListView:SfListView.ItemTemplate>
+            <DataTemplate>
+              <StackLayout Orientation="Vertical" x:DataType="model:ServiceItems">
+                <Image Source="{Binding Images}" Aspect="AspectFill" />
+                <Label Text="{Binding Name}" HorizontalOptions="Center"
+                               FlexLayout.Basis="15%" VerticalOptions="Center" FontSize="{OnPlatform Android=10,UWP=13}"/>
+              </StackLayout>
+            </DataTemplate>
+          </sfListView:SfListView.ItemTemplate>
+        </sfListView:SfListView>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Margin="10,0,10,10" >
+        <Image Source="{local:ImageResource XamApp.Images.notif2.jpg}"/>
+        <Label Text="اعلان ها" Style="{StaticResource transparency}"/>
+      </StackLayout>
+      <Frame HeightRequest="100"  Style="{StaticResource frame}" Margin="10,0,10,10">
+        <StackLayout Style="{StaticResource Layout}" >
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="10,10,10,0">
+              <Label Text="اعلان رسیدن سرویس دهنده به مسیر" Style="{StaticResource Title}"  />
+              <Switch  IsToggled="True" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+          </syncfusion:BorderView>
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,15,10,0" >
+              <Label Text="سایر اعلان ها" Style="{StaticResource transparency}"/>
+              <Switch  IsToggled="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+          </syncfusion:BorderView>
+        </StackLayout>
+      </Frame>
+      <Frame  HeightRequest="{OnPlatform Android=100, UWP=150}" Margin="10,0,10,10"  Style="{StaticResource frame}" >
+        <StackLayout Style="{StaticResource Layout}">
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0" >
+              <Image Source="{local:ImageResource XamApp.Images.account1.jpg}"/>
+              <StackLayout Orientation="Vertical" Spacing="0">
+                <Label Text="ویرایش حساب کاربری" Style="{StaticResource Title}"/>
+                <Label Text="ویرایش عکس، ایمیل و تمامی اطلاعات حساب شما" Style="{StaticResource Detail}"/>
+              </StackLayout>
+            </StackLayout>
+          </syncfusion:BorderView>
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+              <Image Source="{local:ImageResource XamApp.Images.info.jpg}" />
+              <StackLayout Orientation="Vertical" Spacing="0">
+                <Label Text="درباره ی ما" Style="{StaticResource Title}"/>
+                <Label Text="درباره ی اپلیکیشن" Style="{StaticResource Detail}"/>
+              </StackLayout>
+            </StackLayout>
+          </syncfusion:BorderView>
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout Orientation="Horizontal" Padding="10,0,10,0">
+              <Image Source="{local:ImageResource XamApp.Images.logout.jpg}"/>
+              <StackLayout Orientation="Vertical" Margin="0,0,5,0" Spacing="0">
+                <Label Text="خروج از حساب کاربری" Style="{StaticResource Title}" />
+                <Label Text="خداحافظی سخته ولی گاهی لازمه" Style="{StaticResource Detail}"/>
+              </StackLayout>
+            </StackLayout>
+          </syncfusion:BorderView>
+        </StackLayout>
+      </Frame>
+      <Frame HeightRequest="100" Margin="10,0,10,10" Style="{StaticResource frame}" >
+        <StackLayout Style="{StaticResource Layout}">
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal"
+                          Padding="10,15,10,0" >
+              <Label Text="اعلان رسیدن سرویس دهنده به مسیر" Style="{StaticResource Title}"  />
+              <Switch  IsToggled="True" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+          </syncfusion:BorderView>
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"
+                         Padding="10,15,10,0" >
+              <Label Text="سایر اعلان ها" Style="{StaticResource transparency}"/>
+              <Switch  IsToggled="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+          </syncfusion:BorderView>
+        </StackLayout>
+      </Frame>
+      <Frame HeightRequest="100" Margin="10,0,10,10" Style="{StaticResource frame}" >
+        <StackLayout Style="{StaticResource Layout}">
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal"
+                          Padding="10,15,10,0" >
+              <Label Text="اعلان رسیدن سرویس دهنده به مسیر" Style="{StaticResource Title}"  />
+              <Switch  IsToggled="True" HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+          </syncfusion:BorderView>
+          <syncfusion:BorderView Style="{StaticResource Border}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"
+                         Padding="10,15,10,0" >
+              <Label Text="سایر اعلان ها" Style="{StaticResource transparency}"/>
+              <Switch  IsToggled="False" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+          </syncfusion:BorderView>
+        </StackLayout>
+      </Frame>
+
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

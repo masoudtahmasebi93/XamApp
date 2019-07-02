@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamApp.Views.CodeVerifyView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamApp;assembly=XamApp"
+    >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="plainButton" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="#e0e0d1"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <!--<StackLayout
+        Margin="5"
+        VerticalOptions="Center"
+        Orientation="Horizontal"
+        HorizontalOptions="Center"
+        WidthRequest="320">
+        <Entry Placeholder="" Text="{Binding FirstDigit}" />
+        <Entry Placeholder="" Text="{Binding SecondDigit}" />
+        <Entry Placeholder="" Text="{Binding ThirdDigit}" />
+        <Entry Placeholder="" Text="{Binding FourthDigit}" />
+            <StackLayout 
+            VerticalOptions="Center"
+        Orientation="Horizontal"
+        HorizontalOptions="Center">
+                <Button Command="{Binding VerifyCommand}" Text="تایید" />
+            </StackLayout>
+        </StackLayout>-->
+       
+        <ScrollView Orientation="Vertical">
+            <StackLayout Orientation="Vertical" Spacing="10" Padding="10,0,10,0"
+             HorizontalOptions="End" VerticalOptions="Start" >
+                <StackLayout HorizontalOptions="Center" Margin="2">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{OnPlatform UWP=20, Android=18}"/>
+                        <RowDefinition Height="{OnPlatform UWP=20, Android=18}"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" XAlign="{OnPlatform Android=Center, UWP=End}"
+                 Text="ملک رادار" FontSize="{OnPlatform UWP=14, Android=10}" TextColor="Black" />
+                    <Label Grid.Row="1" Grid.Column="1" XAlign="End" Text="MELKRADAR"
+                 FontSize="{OnPlatform UWP=12, Android=9}" />
+                    <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Start" Grid.ColumnSpan="2"
+                 Grid.RowSpan="2"
+                 Source="{local:ImageResource XamApp.Images.realstate1.png}" />
+                </Grid>
+            </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="5" Margin="20"
+                  HeightRequest="{OnPlatform Android=120, UWP=200}"  >
+                    <Image  Source="{local:ImageResource XamApp.Images.mobile.jpg}"
+                WidthRequest="{OnPlatform Android=55,UWP=70}"
+                HeightRequest="{OnPlatform Android=65, UWP=80}"/>
+                    <Label  Text="کد ارسال شده را اینجا وارد کنید" FontSize="Small"
+                HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout  Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center"
+                  HeightRequest="100" Margin="0">
+                <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="" Grid.Row="0" HorizontalTextAlignment="End" VerticalTextAlignment="End" TextColor="White"
+        FontSize="60" Grid.ColumnSpan="4" />
+                        <!--<Frame BorderColor="#000c1a" CornerRadius="10" HasShadow="True">-->
+                        <Entry Text = "{Binding FirstDigit}" Grid.Row="1" Grid.Column="0"
+        Style="{StaticResource plainButton}" />
+                        <!--</Frame>-->
+                        <Entry Text = "{Binding SecondDigit}" Grid.Row="1" Grid.Column="1"
+        Style="{StaticResource plainButton}" />
+                    <Entry Text = "{Binding ThirdDigit}" Grid.Row="1" Grid.Column="2"
+        Style="{StaticResource plainButton}" />
+                    <Entry Text = "{Binding FourthDigit}" Grid.Row="1" Grid.Column="3"
+        Style="{StaticResource plainButton}" />
+                    <Button Command="{Binding VerifyCommand}" Text="تایید" Grid.Row="2" Grid.Column="0"
+                            HorizontalOptions="FillAndExpand" BorderRadius="10"
+                BackgroundColor="#85adad"
+                WidthRequest="40"
+                HeightRequest="{OnPlatform Android=30, UWP=50}"
+                FontAttributes="Bold" FontSize="Small" Margin="0"
+                            />
+                </Grid>
+            </StackLayout>
+                <StackLayout Padding="10" Spacing="5">
+                    <Button Text="تایید" HorizontalOptions="FillAndExpand" BorderRadius="10"
+                BackgroundColor="#85adad"
+                WidthRequest="40"
+                HeightRequest="{OnPlatform Android=30, UWP=50}"
+                FontAttributes="Bold" FontSize="Small" Margin="0"
+                Command="{Binding VerifyCommand}" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
